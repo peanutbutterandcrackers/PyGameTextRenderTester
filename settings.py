@@ -1,0 +1,9 @@
+from pygame import Color
+
+DISPLAYSURF_WIDTH=400
+DISPLAYSURF_HEIGHT=300
+
+BACKGROUND_COLOR=Color(255, 255, 255) # White
+
+TEXT_SIZE=32
+TEXT_COLOR=Color(0, 255, 0) # Green

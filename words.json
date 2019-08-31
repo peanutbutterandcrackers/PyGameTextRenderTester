@@ -1,0 +1,22 @@
+[	
+	{
+		"script": "Latin",
+		"font": "LiberationSans",
+		"words": [
+			"asdf",
+			"jkl",
+            "Guitar"
+			]
+	},
+	{
+		"script": "Devanagari",
+		"font": "Lohit Devanagari",
+		"words": [
+			"मेरो नाम",
+                        "मःम",
+                        "वर्षा",
+                        "सन्तोष",                        
+			"प्रयास"
+		]
+	}
+]	

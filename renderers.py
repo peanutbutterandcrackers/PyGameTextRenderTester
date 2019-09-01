@@ -1,18 +1,18 @@
 def render_PyGame(text, textsize, textcolor, font, backgroundcolor, imgwidth, imgheight):
 	import pygame, time
 
-	pygame.init()
-	DISPLAYSURF = pygame.display.set_mode((imgwidth, imgheight))
+	pygame.font.init()
+	MAINSURF = pygame.Surface((imgwidth, imgheight))
+	MAINSURF.fill(backgroundcolor)
 
 	fontObj = pygame.font.SysFont(font, textsize)
 	textSurfaceObj = fontObj.render(text, True, textcolor)
 	textRectObj = textSurfaceObj.get_rect()
-	textRectObj.center = (imgwidth//2, imgheight//2)
+	destination = (imgwidth//2 - textRectObj.width//2, imgheight//2 - textRectObj.height//2)
+	MAINSURF.blit(textSurfaceObj, destination)
 
-	DISPLAYSURF.fill(backgroundcolor)
-	DISPLAYSURF.blit(textSurfaceObj, textRectObj)
 	outputfilename = 'pygame_rendering_{}.png'.format(time.time())
-	pygame.image.save(DISPLAYSURF, outputfilename)
+	pygame.image.save(MAINSURF, outputfilename)
 	pygame.quit()
 
 	return outputfilename

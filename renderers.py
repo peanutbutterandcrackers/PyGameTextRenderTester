@@ -30,5 +30,5 @@ def render_GIMP(text, textsize, textcolor, font, backgroundcolor, imgwidth, imgh
 	import subprocess, shutil
 	gimp_render_cmd = '(python-fu-render-text-pygame-test RUN-NONINTERACTIVE "{}" {} "{}" "{}" "{}" {} {} "{}")'.format(
 				text, textsize, textcolor, font, backgroundcolor, imgwidth, imgheight, shutil.os.getcwd())
-	return_value = subprocess.call(['gimp-console', '--batch', gimp_render_cmd, '--batch', '(gimp-quit 0)'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+	return_value = subprocess.call(['gimp-console', '--no-data', '--batch', gimp_render_cmd, '--batch', '(gimp-quit 0)'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 	assert return_value == 0, "Something went wrong"

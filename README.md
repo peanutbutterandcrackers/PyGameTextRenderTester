@@ -14,17 +14,17 @@ This mostly uses the standard python library modules but there are a few other m
 3. `imagehash` (`pip install ImageHash`)
 4. `pygame` (`pip install pygame`), obviously.
 
-## words.json:
-To check the rendering of other languages/scripts, all one needs to do is to add the words to `words.json` file. The file is simple and the syntax is:
+## text.json:
+To check the rendering of other languages/scripts, all one needs to do is to add the text to `text.json` file. The file is simple and the syntax is:
 ```json
 [	
 	{
 		"script": "<SCRIPT - 'Devanagari', 'Latin', etc.>",
-		"font": "<Font to render the words with. Should be pre-installed>",
-		"words": [
-			"WORD1",
-			"WORD2",
-                        "WORDS CAN EVEN HAVE SPACES"
+		"font": "<Font to render the text with. Should be pre-installed>",
+		"text": [
+			"TEXT1",
+			"TEXT2",
+            "TEXTS CAN ALSO HAVE SPACES"
 			]
 	}
 ]

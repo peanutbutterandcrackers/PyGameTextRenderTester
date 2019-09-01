@@ -2,7 +2,7 @@
 	{
 		"script": "Latin",
 		"font": "LiberationSans",
-		"words": [
+		"text": [
 			"asdf",
 			"jkl",
             "Guitar"
@@ -11,11 +11,11 @@
 	{
 		"script": "Devanagari",
 		"font": "Lohit Devanagari",
-		"words": [
+		"text": [
 			"मेरो नाम",
-                        "मःम",
-                        "वर्षा",
-                        "सन्तोष",                        
+            "मःम",
+            "वर्षा",
+            "सन्तोष",                        
 			"प्रयास"
 		]
 	}

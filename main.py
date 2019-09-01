@@ -54,22 +54,22 @@ def main():
 	imgheight = settings.DISPLAYSURF_HEIGHT
 	backgroundcolor = settings.BACKGROUND_COLOR
 
-	_file = open('words.json')
+	_file = open('text.json')
 	json_data = json.load(_file)
 
 	renderer_init('gimp')
 
 	for data in json_data:
 		font = data['font']
-		for word in data['words']:
-			print("Currently testing: '{}'".format(word))
-			render('pygame', word, textsize, textcolor, font, backgroundcolor, imgwidth, imgheight)
+		for text in data['text']:
+			print("Currently testing: '{}'".format(text))
+			render('pygame', text, textsize, textcolor, font, backgroundcolor, imgwidth, imgheight)
 			pygame_render = max(glob.glob('*'), key=os.path.getctime) 
-			render('gimp', word, textsize, rgb2hex(textcolor), font, rgb2hex(backgroundcolor), imgwidth, imgheight)
+			render('gimp', text, textsize, rgb2hex(textcolor), font, rgb2hex(backgroundcolor), imgwidth, imgheight)
 			gimp_render = max(glob.glob('*'), key=os.path.getctime)
 			if not imagesAreSimilar(pygame_render, gimp_render, DISSIMILARITY_THRESHOLD=5):
 				print("Dissimilar Renderings: '{}' and '{}'".format(pygame_render, gimp_render))
-				print("Word: {}".format(word))
+				print("Text: {}".format(text))
 				sys.exit(1)
 		print("Successfully rendered {} script".format(data['script']))
 	

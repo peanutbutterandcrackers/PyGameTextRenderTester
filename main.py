@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 import sys
+import os
+
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "True"
 
 def rgb2hex(rgb):
 	if len(rgb) == 3:

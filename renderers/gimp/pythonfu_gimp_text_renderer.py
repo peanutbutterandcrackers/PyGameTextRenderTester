@@ -35,7 +35,7 @@ def render_text(text, textsize, textcolor, font, backgroundcolor, imgwidth, imgh
 	pdb.gimp_file_save(img, merged_layer, filename, '?')
 
 register(
-	"python_fu_render_text_pygame_test",
+	"gimp_text_renderer",
 	"Pygame Test Text Render",
 	"A plugin to generate text to compare with pygame font renderings",
 	"Prafulla Giri", "Prafulla Giri", "2019",

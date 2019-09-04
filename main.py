@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
+
 import glob, json, os, sys
+
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = 'True'
 
 import settings
 from renderers import renderer
 from pygametextrendertester import imagesAreSimilar
-
-os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = 'True'
 
 def main():
 

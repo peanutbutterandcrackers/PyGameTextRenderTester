@@ -17,6 +17,9 @@ def main():
 	imgwidth = settings.IMAGE_WIDTH
 	imgheight = settings.IMAGE_HEIGHT
 	backgroundcolor = settings.BACKGROUND_COLOR
+	DISSIMILARITY_THRESHOLD = settings.DISSIMILARITY_THRESHOLD
+	HASH_SIZE = settings.HASH_SIZE
+	HIGHFREQ_FACTOR = settings.HIGHFREQ_FACTOR
 
 	_file = open('text.json')
 	json_data = json.load(_file)
@@ -29,7 +32,7 @@ def main():
 			pygame_render = max(glob.glob('*'), key=os.path.getctime) 
 			renderer.render('gimp', text, textsize, rgb2hex(textcolor), font, rgb2hex(backgroundcolor), imgwidth, imgheight)
 			gimp_render = max(glob.glob('*'), key=os.path.getctime)
-			if not imagesAreSimilar(pygame_render, gimp_render, DISSIMILARITY_THRESHOLD=5):
+			if not imagesAreSimilar(pygame_render, gimp_render, DISSIMILARITY_THRESHOLD, HASH_SIZE, HIGHFREQ_FACTOR):
 				print("Dissimilar Renderings: '{}' and '{}'".format(pygame_render, gimp_render))
 				print("Text: {}".format(text))
 				sys.exit(1)

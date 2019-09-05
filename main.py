@@ -14,8 +14,8 @@ def main():
 
 	textsize = settings.TEXT_SIZE
 	textcolor = settings.TEXT_COLOR
-	imgwidth = settings.DISPLAYSURF_WIDTH
-	imgheight = settings.DISPLAYSURF_HEIGHT
+	imgwidth = settings.IMAGE_WIDTH
+	imgheight = settings.IMAGE_HEIGHT
 	backgroundcolor = settings.BACKGROUND_COLOR
 
 	_file = open('text.json')

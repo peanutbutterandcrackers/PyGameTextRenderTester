@@ -24,7 +24,7 @@ To check the rendering of other languages/scripts, all one needs to do is to add
 		"text": [
 			"TEXT1",
 			"TEXT2",
-            "TEXTS CAN ALSO HAVE SPACES"
+			"TEXTS CAN ALSO HAVE SPACES"
 			]
 	}
 ]

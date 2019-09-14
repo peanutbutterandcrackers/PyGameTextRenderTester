@@ -1,8 +1,10 @@
+import atexit
 import subprocess, shutil
 
 PLUGIN='pythonfu_gimp_text_renderer.py'
 
 def init():
+	global GIMP_PLUGIN_DIR
 
 	HOME_DIR=shutil.os.path.expanduser('~')
 	MODULE_PATH=shutil.os.path.dirname(__file__)
@@ -16,6 +18,9 @@ def init():
 	shutil.copy2(PLUGIN_PATH, GIMP_PLUGIN_DIR)
 	shutil.os.chmod(shutil.os.path.join(GIMP_PLUGIN_DIR, PLUGIN), 0o755)
 
+def stop():
+	shutil.os.remove(shutil.os.path.join(GIMP_PLUGIN_DIR, PLUGIN))
+
 def render(text, textsize, textcolor, font, backgroundcolor, imgwidth, imgheight):
 	GIMP_RENDER_CMD = '(python-fu-gimp-text-renderer RUN-NONINTERACTIVE "{}" {} "{}" "{}" "{}" {} {} "{}")'.format(
                               text, textsize, textcolor, font, backgroundcolor, imgwidth, imgheight, shutil.os.getcwd())
@@ -23,4 +28,5 @@ def render(text, textsize, textcolor, font, backgroundcolor, imgwidth, imgheight
                                    , stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 	assert return_value == 0, "Something went wrong"
 
+atexit.register(stop)
 init()

@@ -4,6 +4,8 @@ from gimpfu import *
 from time import time
 from os import getcwd
 
+varDNE = lambda var: not (var in vars() or var in globals()) # Variable Does Not Exist
+
 def create_text_layer(drawable, text_color, text_string, font, font_size, draw_on=None):
 	# foreground color is used to fill the foreground layer
 	if tuple(pdb.gimp_context_get_foreground()) != tuple((i*255 for i in text_color)):
@@ -12,6 +14,11 @@ def create_text_layer(drawable, text_color, text_string, font, font_size, draw_o
 	return text_layer
 
 def create_background_layer(drawable, bg_color, make_transparent=False):
+
+	global LAYER_MODE_NORMAL, FILL_BACKGROUND
+	if varDNE('LAYER_MODE_NORMAL'):	LAYER_MODE_NORMAL=0 # GIMP-backwards-compatibility: LAYER_MODE_NORMAL_LEGACY is 0
+	if varDNE('FILL_BACKGROUND'):	FILL_BACKGROUND=1 # GIMP-backwards-compatibility: FILL_BACKGROUND is BACKGROUND_FILL (1) in 2.8.x
+
 	# Background color is used to fill the background layer
 	if tuple(pdb.gimp_context_get_background()) != tuple((i*255 for i in bg_color)):
 		gimp.set_background(bg_color)
@@ -49,7 +56,7 @@ register(
 		(PF_COLOR, "backgroundcolor", "Background Color", (0.0, 0.0, 0.0)),
 		(PF_INT, "imgwidth", "Image Width", 400),
 		(PF_INT, "imgheight", "Image Height", 300),
-		(PF_TEXT, "workdir", "Work Dir", "{}".format(getcwd()))
+		(PF_TEXT, "workdir", "Work Dir", "{}".format(getcwd()).strip())
 	],
 	[],
 	render_text,

@@ -24,9 +24,8 @@ def stop():
 def render(text, textsize, textcolor, font, backgroundcolor, imgwidth, imgheight):
 	GIMP_RENDER_CMD = '(python-fu-gimp-text-renderer RUN-NONINTERACTIVE "{}" {} "{}" "{}" "{}" {} {} "{}")'.format(
                               text, textsize, textcolor, font, backgroundcolor, imgwidth, imgheight, shutil.os.getcwd())
-	return_value = subprocess.call(['gimp-console', '--no-data', '--batch', GIMP_RENDER_CMD, '--batch', '(gimp-quit 0)']
+	subprocess.call(['gimp-console', '--no-data', '--batch', GIMP_RENDER_CMD, '--batch', '(gimp-quit 0)']
                                    , stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-	assert return_value == 0, "Something went wrong"
 
 atexit.register(stop)
 init()

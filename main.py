@@ -26,6 +26,7 @@ def main():
 
 	for data in json_data:
 		font = data['font']
+		print("\nTesting {} script:".format(data['script']))
 		for text in data['text']:
 			print("Currently testing: '{}'".format(text))
 			renderer.render('pygame', text, textsize, textcolor, font, backgroundcolor, imgwidth, imgheight)
@@ -33,8 +34,9 @@ def main():
 			renderer.render('gimp', text, textsize, rgb2hex(textcolor), font, rgb2hex(backgroundcolor), imgwidth, imgheight)
 			gimp_render = max(glob.glob('*'), key=os.path.getctime)
 			if not imagesAreSimilar(pygame_render, gimp_render, DISSIMILARITY_THRESHOLD, HASH_SIZE, HIGHFREQ_FACTOR):
-				print("Dissimilar Renderings: '{}' and '{}'".format(pygame_render, gimp_render))
-				print("Text: {}".format(text))
+				print("...\nFAILURE!!!\nDISSIMILAR RENDERS:'{}' and '{}'".format(pygame_render, gimp_render))
+				print("TEXT: {}".format(text))
+				print("EXITING.")
 				sys.exit(1)
 		print("Successfully rendered {} script".format(data['script']))
 

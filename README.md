@@ -1,5 +1,5 @@
 # PyGameTextRenderTester
-This program essentially tests whether or not texts in various languages are being rendered correctly by pygame.
+This program essentially tests whether or not texts in various languages are being rendered correctly by pygame. Please see [this thread](https://github.com/peanutbutterandcrackers) as to why.
 
 ## How does this work?
 Essentially, this renders the same text-on-a-solid-background `png` using `pygame` and `gimp` using the exact same font, color, font-size, dimensions, etc, and checks the similarity of the rendered `png`s using perceptual hash function (allowing for a slight dissimilarity threshold).
